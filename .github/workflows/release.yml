@@ -1,4 +1,4 @@
-name: Create release with ZIP files for data and resource pack
+name: Create release with ZIP file for datapack
 
 on:
   push:
@@ -23,10 +23,8 @@ jobs:
         id: get_repository_name
         run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
-      - name: Create ZIP files
-        run: |
-          cd datapack && zip -r ../${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip * && cd ..
-          cd resourcepack && zip -r ../${{ env.REPOSITORY_NAME }}-resourcepack-${{ env.TAG }}.zip * && cd ..
+      - name: Create ZIP file
+        run: cd datapack && zip -r ../${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip *
 
       - name: Create Release
         id: create_release
@@ -35,9 +33,7 @@ jobs:
           tag_name: ${{ env.TAG }}
           draft: false
           prerelease: false
-          files: |
-            ${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip
-            ${{ env.REPOSITORY_NAME }}-resourcepack-${{ env.TAG }}.zip
+          files: ${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
