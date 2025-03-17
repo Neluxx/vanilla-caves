@@ -1,0 +1,43 @@
+name: Create release with ZIP files for data and resource pack
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get tag name
+        id: get_tag
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Get repository name
+        id: get_repository_name
+        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+
+      - name: Create ZIP files
+        run: |
+          cd datapack && zip -r ../${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip * && cd ..
+          cd resourcepack && zip -r ../${{ env.REPOSITORY_NAME }}-resourcepack-${{ env.TAG }}.zip * && cd ..
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.TAG }}
+          draft: false
+          prerelease: false
+          files: |
+            ${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip
+            ${{ env.REPOSITORY_NAME }}-resourcepack-${{ env.TAG }}.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
