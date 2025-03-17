@@ -1,11 +1,6 @@
-# Datapack skeleton
+# Old cave generation
 
-Lorem ipsum dolor sit amet
-
----
-
-# Features
-- Feature 1
+This datapack changes the world generation so that the caves are generated as they were before the Cave Cliffs update.
 
 ---
 
