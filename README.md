@@ -4,6 +4,11 @@ This datapack changes the world generation so that the caves are generated as th
 
 ---
 
+# Features
+- Prevent generation of noise caves
+
+---
+
 # Installation
 - Download the datapack and resourcepack ZIP file.
 - Move the datapack into your world’s datapacks folder: ``.minecraft/saves/YOUR_WORLD/datapacks/``
