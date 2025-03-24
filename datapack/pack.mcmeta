@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "",
+        "description": "Vanilla Caves – Disable Noise Caves",
         "pack_format": 61,
         "supported_formats": {
             "min_inclusive": 15,
