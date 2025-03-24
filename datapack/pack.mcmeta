@@ -1,6 +1,10 @@
 {
     "pack": {
+        "description": "",
         "pack_format": 61,
-        "description": "Old cave generation"
+        "supported_formats": {
+            "min_inclusive": 15,
+            "max_inclusive": 61
+        }
     }
 }
