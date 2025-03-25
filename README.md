@@ -20,4 +20,5 @@ Ideal for players who prefer the old-school cave layout.
 ## Uninstalling
 
 - Delete the datapack from ``.minecraft/saves/<world>/datapacks``
-- Note: Newly generated terrain after removal will include noise caves again
+
+> **_NOTE:_** Newly generated terrain after removal will include noise caves again
