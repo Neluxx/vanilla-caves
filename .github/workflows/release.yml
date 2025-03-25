@@ -13,27 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Get tag name
-        id: get_tag
+      - name: Set tag name
         run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
-      - name: Get repository name
-        id: get_repository_name
-        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+      - name: Set repository name
+        run: echo "REPOSITORY=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
-      - name: Create ZIP file
-        run: cd datapack && zip -r ../${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip *
+      - name: Create ZIP files
+        run: |
+          cd datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
 
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+      - name: Create release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG }}
           draft: false
           prerelease: false
-          files: ${{ env.REPOSITORY_NAME }}-datapack-${{ env.TAG }}.zip
+          files: |
+            ${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
