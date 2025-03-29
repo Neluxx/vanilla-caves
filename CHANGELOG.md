@@ -10,13 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
-- Slightly enlarged caves
-- Reduction of surface cave entrances
-- Increasing frequency of underground caves
 
 ### Removed
 
 ### Fixed
+
+## [v1.1.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.1.0) - 2025-03-29
+
+### Changed
+- Slightly enlarged caves
+- Reduction of surface cave entrances
+- Increasing frequency of underground caves
 
 ## [v1.0.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.0.0) - 2025-03-26
 
