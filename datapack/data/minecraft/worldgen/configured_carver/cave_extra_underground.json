@@ -27,22 +27,22 @@
     },
     "floor_level": {
       "type": "minecraft:uniform",
-      "max_exclusive": -0.5,
+      "max_exclusive": -0.4,
       "min_inclusive": -1
     },
     "horizontal_radius_multiplier": {
       "type": "minecraft:uniform",
       "max_exclusive": 1.5,
-      "min_inclusive": 1
+      "min_inclusive": 0.9
     },
     "lava_level": {
       "above_bottom": 8
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "replaceable": "#minecraft:overworld_carver_replaceables",
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
-      "max_exclusive": 1.5,
+      "max_exclusive": 1.4,
       "min_inclusive": 1
     },
     "y": {
@@ -56,8 +56,8 @@
     },
     "yScale": {
       "type": "minecraft:uniform",
-      "max_exclusive": 1,
-      "min_inclusive": 0.25
+      "max_exclusive": 0.9,
+      "min_inclusive": 0.1
     }
   }
 }
