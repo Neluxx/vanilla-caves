@@ -1,18 +1,39 @@
 {
     "pack": {
-        "description": "Vanilla Caves – Disable Noise Caves",
+        "description": {
+            "text": "Vanilla Caves\n",
+            "color": "gray",
+            "extra": [
+                {
+                    "text": "By Neluxx ",
+                    "color": "white",
+                    "extra": [
+                        {
+                            "text": "for ",
+                            "color": "gray",
+                            "extra": [
+                                {
+                                    "text": "1.19 - 1.21.5",
+                                    "color": "yellow"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
         "pack_format": 10,
         "supported_formats": {
             "min_inclusive": 10,
             "max_inclusive": 71
         }
     },
-	"overlays": {
-		"entries": [
-			{
-				"formats": {"min_inclusive": 41, "max_inclusive": 71},
-				"directory": "overlay_41"
-			}
-		]
-	}
+    "overlays": {
+        "entries": [
+            {
+                "formats": {"min_inclusive": 41, "max_inclusive": 71},
+                "directory": "overlay_41"
+            }
+        ]
+    }
 }
