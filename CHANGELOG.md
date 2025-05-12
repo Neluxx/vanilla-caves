@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [v1.2.2](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.2.2) - 2025-05-12
+
+### Changed
+- Update pack description
+
 ## [v1.2.1](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.2.1) - 2025-04-07
 
 ### Changed
