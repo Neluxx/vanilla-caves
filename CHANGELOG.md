@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [v1.4.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.4.0) - 2025-07-02
+
+### Changed
+- Update to datapack format 81 to support version 1.21.7
+
 ## [v1.3.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.3.0) - 2025-06-20
 
 ### Changed
