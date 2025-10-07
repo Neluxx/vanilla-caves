@@ -22,7 +22,9 @@
                 }
             ]
         },
-        "pack_format": 10,
+        "pack_format": 88,
+        "min_format": 10,
+        "max_format": 88,
         "supported_formats": {
             "min_inclusive": 10,
             "max_inclusive": 88
@@ -31,8 +33,13 @@
     "overlays": {
         "entries": [
             {
-                "formats": {"min_inclusive": 41, "max_inclusive": 88},
-                "directory": "overlay_41"
+                "directory": "overlay_41",
+                "min_format": 41,
+                "max_format": 88,
+                "formats": {
+                    "min_inclusive": 41,
+                    "max_inclusive": 88
+                }
             }
         ]
     }
