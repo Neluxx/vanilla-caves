@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "neluxx.vanilla_caves.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
