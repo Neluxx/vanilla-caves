@@ -23,7 +23,7 @@ jobs:
 
       - name: Create ZIP files
         run: |
-          cd datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
+          cd src/main/resources/datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
 
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -32,7 +32,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
+            src/main/resources/${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
