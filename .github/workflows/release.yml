@@ -1,4 +1,4 @@
-name: Create release with ZIP file for datapack
+name: Create release with mod JAR and datapack ZIP
 
 on:
   push:
@@ -15,15 +15,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Set tag name
         run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Set repository name
         run: echo "REPOSITORY=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
-      - name: Create ZIP files
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build mod with Gradle
+        run: ./gradlew clean build
+
+      - name: Find JAR file
+        id: find_jar
         run: |
-          cd src/main/resources/datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
+          JAR_FILE=$(find build/libs -name "*.jar" ! -name "*-sources.jar" | head -n 1)
+          echo "jar_file=$JAR_FILE" >> $GITHUB_OUTPUT
+          echo "jar_name=$(basename $JAR_FILE)" >> $GITHUB_OUTPUT
+
+      - name: Create datapack ZIP file
+        run: |
+          cd src/main/resources/resourcepacks/datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
 
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -32,7 +51,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            src/main/resources/${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
+            ${{ steps.find_jar.outputs.jar_file }}
+            src/main/resources/resourcepacks/${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
