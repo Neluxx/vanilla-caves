@@ -3,9 +3,9 @@
 	"id": "vanilla-caves",
 	"version": "${version}",
 	"name": "Vanilla Caves",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A minecraft fabric mod that removes noise caves from the Caves & Cliffs Update and brings back the old vanilla carver caves.",
 	"authors": [
-		"Me!"
+		"Neluxx"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
