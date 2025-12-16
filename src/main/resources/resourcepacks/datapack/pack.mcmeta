@@ -13,7 +13,7 @@
                             "color": "gray",
                             "extra": [
                                 {
-                                    "text": "1.19 - 1.21.10",
+                                    "text": "1.19 - 1.21.11",
                                     "color": "yellow"
                                 }
                             ]
@@ -22,23 +22,23 @@
                 }
             ]
         },
-        "pack_format": 88,
-        "min_format": 10,
-        "max_format": 88,
+        "pack_format": 94,
+        "min_format": [10, 0],
+        "max_format": [94, 1],
         "supported_formats": {
             "min_inclusive": 10,
-            "max_inclusive": 88
+            "max_inclusive": 94
         }
     },
     "overlays": {
         "entries": [
             {
                 "directory": "overlay_41",
-                "min_format": 41,
-                "max_format": 88,
+                "min_format": [41, 0],
+                "max_format": [94, 1],
                 "formats": {
                     "min_inclusive": 41,
-                    "max_inclusive": 88
+                    "max_inclusive": 94
                 }
             }
         ]
