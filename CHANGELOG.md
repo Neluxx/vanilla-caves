@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [v2.1.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.1.0) - 2025-12-16
+
+### Changed
+- Make the mod/datapack compatible with Minecraft **1.21.11**.
+
 ## [v2.0.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.0.0) - 2025-12-09
 
 ### Changed
