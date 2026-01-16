@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [v2.1.1](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.1.1) - 2026-01-16
+
+### Fixed
+- Add overlay to fix compatibility errors during world generation
+
 ## [v2.1.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.1.0) - 2025-12-16
 
 ### Changed
