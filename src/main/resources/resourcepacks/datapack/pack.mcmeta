@@ -23,8 +23,8 @@
             ]
         },
         "pack_format": 94,
-        "min_format": 10,
-        "max_format": 94,
+        "min_format": [10, 0],
+        "max_format": [94, 1],
         "supported_formats": {
             "min_inclusive": 10,
             "max_inclusive": 94
@@ -34,8 +34,8 @@
         "entries": [
             {
                 "directory": "overlay_41",
-                "min_format": 41,
-                "max_format": 81,
+                "min_format": [41, 0],
+                "max_format": [81, 0],
                 "formats": {
                     "min_inclusive": 41,
                     "max_inclusive": 81
@@ -43,8 +43,8 @@
             },
             {
                 "directory": "overlay_81",
-                "min_format": 81,
-                "max_format": 94,
+                "min_format": [81, 0],
+                "max_format": [94, 1],
                 "formats": {
                     "min_inclusive": 81,
                     "max_inclusive": 94
