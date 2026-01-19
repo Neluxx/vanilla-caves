@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [v2.1.2](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.1.2) - 2026-01-19
+
+### Fixed
+- Add missing configured_carver configs for the overlay_81
+
 ## [v2.1.1](https://github.com/Neluxx/vanilla-caves/releases/tag/v2.1.1) - 2026-01-16
 
 ### Fixed
