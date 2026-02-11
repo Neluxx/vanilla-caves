@@ -3,7 +3,7 @@ name: Create release with datapack ZIP
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 
 permissions:
   contents: write
