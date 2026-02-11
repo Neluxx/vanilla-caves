@@ -21,7 +21,7 @@ jobs:
           echo "REPOSITORY=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
 
       - name: Create datapack ZIP file
-        run: cd datapack && zip -r ../${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip *
+        run: cd datapack && zip -r ../${{ env.REPOSITORY }}-datapack.zip *
 
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -30,6 +30,6 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: false
-          files: ${{ env.REPOSITORY }}-datapack-${{ env.TAG }}.zip
+          files: ${{ env.REPOSITORY }}-datapack.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
