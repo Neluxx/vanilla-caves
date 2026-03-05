@@ -1,0 +1,1 @@
+tellraw @a {"text":"{{ project_name }} loaded!","color":"gold"}
