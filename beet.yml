@@ -7,7 +7,7 @@ pipeline:
 meta:
   render:
     data_pack:
-      - "*"
+      - "**"
 
 data_pack:
   description: Beet datapack template
@@ -18,5 +18,11 @@ data_pack:
     - directory: v1_21_9
       min_format: 88
       max_format: 94
+
+resource_pack:
+  description: Beet resourcepack template
+  min_format: 64
+  max_format: 75
+  load: src/resourcepack
 
 output: build
