@@ -1,0 +1,22 @@
+name: Beet Datapack Template
+version: 0.1.0
+
+pipeline:
+  - beet.contrib.render
+
+meta:
+  render:
+    data_pack:
+      - "*"
+
+data_pack:
+  description: Beet datapack template
+  min_format: 81
+  max_format: 94
+  load: src/datapack
+  overlays:
+    - directory: v1_21_9
+      min_format: 88
+      max_format: 94
+
+output: build
