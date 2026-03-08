@@ -93,3 +93,9 @@ Overlays are picked up automatically from subdirectories within the load path. F
 - [Beet Documentation](https://mcbeet.dev)
 - [Minecraft Wiki - Data pack format](https://minecraft.wiki/w/Pack_format#Data_pack_format_history)
 - [Minecraft Wiki - Resource pack format](https://minecraft.wiki/w/Pack_format#Resource_pack_format_history)
+
+## Contributing
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and guidelines.
+
+## Syncing Datapack Repositories
+If you maintain a datapack repository based on this template, see [SYNC.md](SYNC.md) for instructions on how to pull in template updates.
