@@ -1,0 +1,49 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Build with beet
+        run: uvx beet build
+
+      - name: Get build info
+        id: info
+        run: |
+          read PROJECT VERSION <<< $(python3 -c "import yaml; d=yaml.safe_load(open('beet.yml')); print(d['name'].lower().replace(' ','_'), d['version'])")
+          echo "project=$PROJECT" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          echo "repo=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
+
+      - name: Package datapack
+        run: |
+          cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack
+          zip -r "../../${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_datapack.zip" .
+
+      - name: Package resourcepack
+        run: |
+          cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_resource_pack
+          zip -r "../../${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_resourcepack.zip" .
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_datapack.zip
+            ${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_resourcepack.zip
+          fail_on_unmatched_files: false
