@@ -109,10 +109,10 @@ If you enjoy this datapack and find it useful, please consider giving the reposi
 This helps the project gain visibility and motivates further development and maintenance.
 
 ## Contributing
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and guidelines.
+Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for commit conventions and guidelines.
 
 ## Syncing Datapack Repositories
-If you maintain a datapack repository based on this template, see [SYNC.md](SYNC.md) for instructions on how to pull in template updates.
+If you maintain a datapack repository based on this template, see [SYNC.md](docs/SYNC.md) for instructions on how to pull in template updates.
 
 ## Resources
 
