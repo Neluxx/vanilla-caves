@@ -1,7 +1,0 @@
-{
-    "name": "Vanilla Caves",
-    "output": "build",
-    "data_pack": {
-        "load": ["datapack"]
-    }
-}

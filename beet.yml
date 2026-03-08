@@ -1,0 +1,35 @@
+name: Vanilla Caves
+version: 0.1.0
+
+pipeline:
+  - beet.contrib.render
+
+meta:
+  render:
+    data_pack:
+      - "**"
+
+data_pack:
+  description: {"text":"Vanilla Caves\n1.19 - 1.21.11", "color":"gray"}
+  pack_format: 10
+  min_format: 10
+  max_format: 94
+  supported_formats:
+    min_inclusive: 10
+    max_inclusive: 94
+  load: src/datapack
+  overlays:
+    - directory: v1_20_5
+      min_format: 41
+      max_format: 80
+      formats:
+        min_inclusive: 41
+        max_inclusive: 80
+    - directory: v1_21_7
+      min_format: 81
+      max_format: 94
+      formats:
+        min_inclusive: 81
+        max_inclusive: 94
+
+output: build
