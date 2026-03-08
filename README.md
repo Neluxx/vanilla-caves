@@ -67,13 +67,15 @@ beet cache --clear
 
 ```
 .
+├── docs/
 ├── src/
 │   ├── datapack/          # Datapack source files
-│   │   └── v1_21_9/       # Overlay for overwrites
+│   │   └── v1_21/         # Overlay for overwrites
 │   └── resourcepack/      # Resourcepack source files
 ├── build/                 # Build output (git-ignored)
 ├── beet.yml               # Beet project configuration
-└── pyproject.toml         # Python project & dependency config
+├── pyproject.toml         # Python project & dependency config
+└── spyglass.json          # Datapack helper plus extension config
 ```
 
 ## Configuration
@@ -82,8 +84,8 @@ Pack format ranges are configured in `beet.yml`. The project currently targets:
 
 | Pack | Min format | Max format | Versions |
 |------|-----------|-----------|----------|
-| Data pack | 81 | 94 | 1.20.5 – 1.21.9 |
-| Resource pack | 69 | 75 | 1.20.5 – 1.21.9 |
+| Data pack | 15 | 94 | 1.20 – 1.21.11 |
+| Resource pack | 15 | 75 | 1.20 – 1.21.11 |
 
 Overlays are picked up automatically from subdirectories within the load path. Format ranges for overlays are set explicitly in `beet.yml`.
 
@@ -99,9 +101,18 @@ This template includes a `spyglass.json` for the [Datapack Helper Plus](https://
 }
 ```
 
-With `"gameVersion": "Auto"`, DHP detects the target Minecraft version from your `pack.mcmeta` automatically — no manual version updates needed when upgrading the pack.
+With `"gameVersion": "Auto"`, DHP detects the target Minecraft version from your `pack.mcmeta` automatically. Since DHP can only validate against one version at a time, you can temporarily set `"gameVersion"` to a specific version (e.g. `"1.20.5"`) when you need to check code inside an overlay against that particular version.
 
-Since DHP can only validate against one version at a time, you can temporarily set `"gameVersion"` to a specific version (e.g. `"1.20.5"`) when you need to check code inside an overlay against that particular version.
+## Support the Project
+
+If you enjoy this datapack and find it useful, please consider giving the repository a star and following me on GitHub.  
+This helps the project gain visibility and motivates further development and maintenance.
+
+## Contributing
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and guidelines.
+
+## Syncing Datapack Repositories
+If you maintain a datapack repository based on this template, see [SYNC.md](SYNC.md) for instructions on how to pull in template updates.
 
 ## Resources
 
@@ -109,9 +120,3 @@ Since DHP can only validate against one version at a time, you can temporarily s
 - [Beet Documentation](https://mcbeet.dev)
 - [Minecraft Wiki - Data pack format](https://minecraft.wiki/w/Pack_format#Data_pack_format_history)
 - [Minecraft Wiki - Resource pack format](https://minecraft.wiki/w/Pack_format#Resource_pack_format_history)
-
-## Contributing
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for commit conventions and guidelines.
-
-## Syncing Datapack Repositories
-If you maintain a datapack repository based on this template, see [SYNC.md](SYNC.md) for instructions on how to pull in template updates.
