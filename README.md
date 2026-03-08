@@ -87,6 +87,22 @@ Pack format ranges are configured in `beet.yml`. The project currently targets:
 
 Overlays are picked up automatically from subdirectories within the load path. Format ranges for overlays are set explicitly in `beet.yml`.
 
+### Datapack Helper Plus
+
+This template includes a `spyglass.json` for the [Datapack Helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) VS Code extension:
+
+```json
+{
+  "env": {
+    "gameVersion": "Auto"
+  }
+}
+```
+
+With `"gameVersion": "Auto"`, DHP detects the target Minecraft version from your `pack.mcmeta` automatically — no manual version updates needed when upgrading the pack.
+
+Since DHP can only validate against one version at a time, you can temporarily set `"gameVersion"` to a specific version (e.g. `"1.20.5"`) when you need to check code inside an overlay against that particular version.
+
 ## Resources
 
 - [Beet GitHub](https://github.com/mcbeet/beet)
