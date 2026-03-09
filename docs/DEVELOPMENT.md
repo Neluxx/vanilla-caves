@@ -18,6 +18,7 @@ uv sync
 ```powershell
 # Windows (PowerShell)
 .\.venv\Scripts\activate
+
 # Linux / macOS
 source .venv/bin/activate
 ```
