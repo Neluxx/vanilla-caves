@@ -35,4 +35,3 @@ If there are conflicts during the merge, resolve them, `git add` the resolved fi
 
 - The `--allow-unrelated-histories` flag is only needed on the very first merge, after which the histories are linked and it can be omitted.
 - A regular merge commit is used (not `--squash`) so that Git automatically tracks the sync point, preventing already-synced changes from being re-applied on future syncs.
-- The canonical sync commit message is `chore: sync with beet template` following the [Conventional Commits](https://www.conventionalcommits.org/) convention.
