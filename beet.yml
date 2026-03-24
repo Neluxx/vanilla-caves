@@ -10,13 +10,13 @@ meta:
       - "**"
 
 data_pack:
-  description: {"text":"Vanilla Caves\n1.19 - 1.21.11", "color":"gray"}
+  description: {"text":"Vanilla Caves\n1.19 - 26.1", "color":"gray"}
   pack_format: 10
   min_format: 10
-  max_format: 94
+  max_format: 101
   supported_formats:
     min_inclusive: 10
-    max_inclusive: 94
+    max_inclusive: 101
   load: src/datapack
   overlays:
     - directory: v1_20_5
@@ -27,9 +27,9 @@ data_pack:
         max_inclusive: 80
     - directory: v1_21_7
       min_format: 81
-      max_format: 94
+      max_format: 101
       formats:
         min_inclusive: 81
-        max_inclusive: 94
+        max_inclusive: 101
 
 output: build
