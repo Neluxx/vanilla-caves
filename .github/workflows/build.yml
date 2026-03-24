@@ -37,8 +37,13 @@ jobs:
 
       - name: Package resourcepack
         run: |
-          cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_resource_pack
-          zip -r "../../${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_resourcepack.zip" .
+          DIR="build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_resource_pack"
+          if [ -d "$DIR" ]; then
+            cd "$DIR"
+            zip -r "../../${{ steps.info.outputs.repo }}_${{ steps.info.outputs.tag }}_resourcepack.zip" .
+          else
+            echo "No resource pack found, skipping."
+          fi
 
       - name: Upload artifacts to release
         uses: softprops/action-gh-release@v2
