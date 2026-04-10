@@ -16,6 +16,7 @@ bin/
 
 # python
 .venv
+__pycache__/
 
 # beet
 build/
