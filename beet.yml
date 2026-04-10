@@ -2,8 +2,8 @@ name: Beet Datapack Template
 version: 0.1.0
 
 pipeline:
-  - beet.contrib.render
 # - src.plugins.example_plugin
+  - beet.contrib.render
 
 meta:
   render:
