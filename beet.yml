@@ -9,10 +9,9 @@ meta:
   render:
     data_pack:
       - "**"
-  beet_datapack_template:
-    base_version: "1.20"
-    overlay_versions:
-      v1_21: "1.21"
+  base_version: "1.20"
+  overlay_versions:
+    v1_21: "1.21"
 
 data_pack:
   load: src/datapack
