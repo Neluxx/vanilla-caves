@@ -2,7 +2,6 @@ from beet import Context, DataPack
 from beet.contrib.vanilla import Vanilla
 from beet.contrib.worldgen import WorldgenConfiguredCarver
 
-CAVE = "minecraft:cave_extra_underground"
 PROBABILITY = 0.2  # defaults to 0.07
 X_MAX_EXCLUSIVE = 1.5  # defaults to 1.4
 X_MIN_INCLUSIVE = 0.9  # defaults to 0.7
@@ -26,7 +25,7 @@ def get_source(vanilla: Vanilla, version: str):
 
 
 def apply_patch(pack: DataPack, source, nested: bool):
-    patched = source[CAVE].copy()
+    patched = source["minecraft:cave_extra_underground"].copy()
 
     # The probability that each chunk attempts to generate carvers.
     config = patched.data["config"]
@@ -45,4 +44,4 @@ def apply_patch(pack: DataPack, source, nested: bool):
     # The height at which this carver attempts to generate.
     config["y"]["max_inclusive"]["absolute"] = Y_ABSOLUTE_MAX
 
-    pack[WorldgenConfiguredCarver][CAVE] = patched
+    pack[WorldgenConfiguredCarver]["minecraft:cave_extra_underground"] = patched
