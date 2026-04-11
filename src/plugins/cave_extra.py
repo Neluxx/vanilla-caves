@@ -12,16 +12,12 @@ Y_ABSOLUTE_MAX = 48  # defaults to 47
 
 
 def beet_default(ctx: Context):
-    base_version = ctx.meta["base_version"]
-    overlay_versions = ctx.meta["overlay_versions"]
-    vanilla = ctx.inject(Vanilla)
-
-    source = get_source(vanilla, base_version)
+    source = get_source(ctx.inject(Vanilla), ctx.meta["base_version"])
     apply_patch(ctx.data, source, nested=True)
 
-    for directory, version in overlay_versions.items():
+    for directory, version in ctx.meta["overlay_versions"].items():
         overlay = ctx.data.overlays[directory]
-        source = get_source(vanilla, version)
+        source = get_source(ctx.inject(Vanilla), version)
         apply_patch(overlay, source, nested=False)
 
 
@@ -31,17 +27,22 @@ def get_source(vanilla: Vanilla, version: str):
 
 def apply_patch(pack: DataPack, source, nested: bool):
     patched = source[CAVE].copy()
+
+    # The probability that each chunk attempts to generate carvers.
     config = patched.data["config"]
     config["probability"] = PROBABILITY
 
+    # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
     x_radius = config["horizontal_radius_multiplier"]["value"] if nested else config["horizontal_radius_multiplier"]
     x_radius["max_exclusive"] = X_MAX_EXCLUSIVE
     x_radius["min_inclusive"] = X_MIN_INCLUSIVE
 
+    # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
     y_radius = config["vertical_radius_multiplier"]["value"] if nested else config["vertical_radius_multiplier"]
     y_radius["max_exclusive"] = Y_MAX_EXCLUSIVE
     y_radius["min_inclusive"] = Y_MIN_INCLUSIVE
 
+    # The height at which this carver attempts to generate.
     config["y"]["max_inclusive"]["absolute"] = Y_ABSOLUTE_MAX
 
     pack[WorldgenConfiguredCarver][CAVE] = patched
