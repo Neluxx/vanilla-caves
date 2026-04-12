@@ -2,13 +2,6 @@ from beet import Context, DataPack
 from beet.contrib.vanilla import Vanilla
 from beet.contrib.worldgen import WorldgenConfiguredCarver
 
-PROBABILITY = 0.2  # defaults to 0.07
-X_MAX_EXCLUSIVE = 1.5  # defaults to 1.4
-X_MIN_INCLUSIVE = 0.9  # defaults to 0.7
-Y_MAX_EXCLUSIVE = 1.4  # defaults to 1.3
-Y_MIN_INCLUSIVE = 1  # defaults to 0.8
-Y_ABSOLUTE_MAX = 48  # defaults to 47
-
 
 def beet_default(ctx: Context):
     source = get_source(ctx.inject(Vanilla), ctx.meta["base_version"])
@@ -29,19 +22,19 @@ def apply_patch(pack: DataPack, source, nested: bool):
 
     # The probability that each chunk attempts to generate carvers.
     config = patched.data["config"]
-    config["probability"] = PROBABILITY
+    config["probability"] = 0.2  # defaults to 0.07
 
     # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
     x_radius = config["horizontal_radius_multiplier"]["value"] if nested else config["horizontal_radius_multiplier"]
-    x_radius["max_exclusive"] = X_MAX_EXCLUSIVE
-    x_radius["min_inclusive"] = X_MIN_INCLUSIVE
+    x_radius["max_exclusive"] = 1.5  # defaults to 1.4
+    x_radius["min_inclusive"] = 0.9  # defaults to 0.7
 
     # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
     y_radius = config["vertical_radius_multiplier"]["value"] if nested else config["vertical_radius_multiplier"]
-    y_radius["max_exclusive"] = Y_MAX_EXCLUSIVE
-    y_radius["min_inclusive"] = Y_MIN_INCLUSIVE
+    y_radius["max_exclusive"] = 1.4  # defaults to 1.3
+    y_radius["min_inclusive"] = 1  # defaults to 0.8
 
     # The height at which this carver attempts to generate.
-    config["y"]["max_inclusive"]["absolute"] = Y_ABSOLUTE_MAX
+    config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 47
 
     pack[WorldgenConfiguredCarver]["minecraft:cave_extra_underground"] = patched
