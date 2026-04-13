@@ -5,25 +5,13 @@ pipeline:
   - src.plugins.example_plugin
 
 meta:
-  base_version: "1.20"
-  overlay_versions:
-    v1_21: "1.21"
+  base_version: "1.21.9"
 
 data_pack:
+  zipped: true
   load: src/datapack
-  description: {"text":"Beet Datapack Template\n1.20 - 1.21.11", "color":"gray"}
-  pack_format: 15
-  min_format: 15
-  max_format: 94
-  supported_formats:
-    min_inclusive: 15
-    max_inclusive: 94
-  overlays:
-    - directory: v1_21
-      min_format: 48
-      max_format: 94
-      formats:
-        min_inclusive: 48
-        max_inclusive: 94
+  description: {"text":"Beet Datapack Template\n1.21.9 - 26.1", "color":"gray"}
+  min_format: 82
+  max_format: 101
 
 output: build

@@ -1,0 +1,28 @@
+name: Beet Datapack Template Legacy
+version: 0.1.0
+
+pipeline:
+  - src.plugins.example_plugin
+
+meta:
+  base_version: "1.20"
+  overlay_versions:
+    v1_21: "1.21"
+
+data_pack:
+  zipped: true
+  load: src/datapack
+  description: {"text":"Beet Datapack Template\n1.20 - 1.21.8", "color":"gray"}
+  pack_format: 15
+  supported_formats:
+    min_inclusive: 15
+    max_inclusive: 44
+  overlays:
+    - directory: v1_21
+      min_format: 45
+      max_format: 81
+      formats:
+        min_inclusive: 45
+        max_inclusive: 81
+
+output: build
