@@ -30,10 +30,4 @@ data_pack:
         min_inclusive: 48
         max_inclusive: 94
 
-resource_pack:
-  description: Beet resourcepack template
-  min_format: 15
-  max_format: 75
-  load: src/resourcepack
-
 output: build
