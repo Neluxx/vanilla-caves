@@ -10,7 +10,6 @@ meta:
     v1_21: "1.21"
 
 data_pack:
-  zipped: true
   load: src/datapack
   description: {"text":"Beet Datapack Template\n1.20 - 1.21.8", "color":"gray"}
   pack_format: 15

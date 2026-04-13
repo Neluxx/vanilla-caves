@@ -8,7 +8,6 @@ meta:
   base_version: "1.21.9"
 
 data_pack:
-  zipped: true
   load: src/datapack
   description: {"text":"Beet Datapack Template\n1.21.9 - 26.1", "color":"gray"}
   min_format: 82
