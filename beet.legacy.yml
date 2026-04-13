@@ -1,0 +1,35 @@
+name: Vanilla Caves Legacy
+version: 0.2.0
+
+pipeline:
+  - src.plugins.cave
+  - src.plugins.cave_extra
+
+meta:
+  base_version: "1.19"
+  overlay_versions:
+    v1_20_5: "1.20.5"
+    v1_21_7: "1.21.7"
+
+data_pack:
+  load: src/legacy
+  description: {"text":"Vanilla Caves\n1.19 - 1.21.8", "color":"gray"}
+  pack_format: 10
+  supported_formats:
+    min_inclusive: 10
+    max_inclusive: 81
+  overlays:
+    - directory: v1_20_5
+      min_format: 41
+      max_format: 80
+      formats:
+        min_inclusive: 41
+        max_inclusive: 80
+    - directory: v1_21_7
+      min_format: 81
+      max_format: 81
+      formats:
+        min_inclusive: 81
+        max_inclusive: 81
+
+output: build
