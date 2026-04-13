@@ -45,7 +45,7 @@ jobs:
         run: |
           cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack
           zip -r "../../${{ steps.info.outputs.repo }}.zip" .
-          cd build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack
+          cd ../${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack
           zip -r "../../${{ steps.info.outputs.repo }}_legacy.zip" .
 
       - name: Create release
