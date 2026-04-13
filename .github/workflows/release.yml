@@ -69,7 +69,7 @@ jobs:
             This helps the project gain visibility and motivates further development and maintenance.
           files: |
             build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack.zip
-            build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_legacy_data_pack.zip
+            build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack.zip
             build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_resource_pack.zip
-            build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_legacy_resource_pack.zip
+            build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_resource_pack.zip
           fail_on_unmatched_files: false
