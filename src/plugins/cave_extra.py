@@ -1,40 +1,36 @@
-from beet import Context, DataPack
+from beet import Context
 from beet.contrib.vanilla import Vanilla
 from beet.contrib.worldgen import WorldgenConfiguredCarver
 
+from src.plugins.utils import iterate_versions, parse_version
+
 
 def beet_default(ctx: Context):
-    source = get_source(ctx.inject(Vanilla), ctx.meta["base_version"])
-    apply_patch(ctx.data, source, nested=True)
+    vanilla = ctx.inject(Vanilla)
 
-    for directory, version in ctx.meta["overlay_versions"].items():
-        overlay = ctx.data.overlays[directory]
-        source = get_source(ctx.inject(Vanilla), version)
-        apply_patch(overlay, source, nested=False)
+    for pack, version in iterate_versions(ctx):
+        source = vanilla.releases[version].mount("data").data[WorldgenConfiguredCarver]
+        patched = source["minecraft:cave"].copy()
+        config = patched.data["config"]
+        nested = parse_version(version) < (1, 20, 5)
 
+        def field(name):
+            return config[name]["value"] if nested else config[name]
 
-def get_source(vanilla: Vanilla, version: str):
-    return vanilla.releases[version].mount("data").data[WorldgenConfiguredCarver]
+        # The probability that each chunk attempts to generate carvers.
+        config["probability"] = 0.2  # defaults to 0.07
 
+        # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
+        x_radius = field("horizontal_radius_multiplier")
+        x_radius["max_exclusive"] = 1.5  # defaults to 1.4
+        x_radius["min_inclusive"] = 0.8  # defaults to 0.7
 
-def apply_patch(pack: DataPack, source, nested: bool):
-    patched = source["minecraft:cave_extra_underground"].copy()
+        # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
+        y_radius = field("vertical_radius_multiplier")
+        y_radius["max_exclusive"] = 1.4  # defaults to 1.3
+        y_radius["min_inclusive"] = 0.9  # defaults to 0.8
 
-    # The probability that each chunk attempts to generate carvers.
-    config = patched.data["config"]
-    config["probability"] = 0.2  # defaults to 0.07
+        # The height at which this carver attempts to generate.
+        config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 47
 
-    # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
-    x_radius = config["horizontal_radius_multiplier"]["value"] if nested else config["horizontal_radius_multiplier"]
-    x_radius["max_exclusive"] = 1.5  # defaults to 1.4
-    x_radius["min_inclusive"] = 0.9  # defaults to 0.7
-
-    # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
-    y_radius = config["vertical_radius_multiplier"]["value"] if nested else config["vertical_radius_multiplier"]
-    y_radius["max_exclusive"] = 1.4  # defaults to 1.3
-    y_radius["min_inclusive"] = 1  # defaults to 0.8
-
-    # The height at which this carver attempts to generate.
-    config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 47
-
-    pack[WorldgenConfiguredCarver]["minecraft:cave_extra_underground"] = patched
+        pack[WorldgenConfiguredCarver]["minecraft:cave"] = patched
