@@ -3,12 +3,8 @@ version: 0.1.0
 
 pipeline:
   - src.plugins.example_plugin
-  - beet.contrib.render
 
 meta:
-  render:
-    data_pack:
-      - "**"
   base_version: "1.20"
   overlay_versions:
     v1_21: "1.21"
