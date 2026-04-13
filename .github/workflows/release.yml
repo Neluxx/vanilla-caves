@@ -36,10 +36,17 @@ jobs:
       - name: Get release info
         id: info
         run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          TAG="${GITHUB_REF_NAME#v}"
-          echo "project=${REPO//-/_}" >> "$GITHUB_OUTPUT"
-          echo "version=$TAG" >> "$GITHUB_OUTPUT"
+          read PROJECT VERSION <<< $(python3 -c "import yaml; d=yaml.safe_load(open('beet.yml')); print(d['name'].lower().replace(' ','_'), d['version'])")
+          echo "project=$PROJECT" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "repo=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
+
+      - name: Package release artifacts
+        run: |
+          cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack
+          zip -r "../../${{ steps.info.outputs.repo }}.zip" .
+          cd build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack
+          zip -r "../../${{ steps.info.outputs.repo }}_legacy.zip" .
 
       - name: Create release
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
@@ -68,8 +75,6 @@ jobs:
             If you enjoy this datapack and find it useful, please consider giving the repository a star and following me on GitHub.  
             This helps the project gain visibility and motivates further development and maintenance.
           files: |
-            build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack.zip
-            build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack.zip
-            build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_resource_pack.zip
-            build/${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_resource_pack.zip
+            ${{ steps.info.outputs.repo }}.zip
+            ${{ steps.info.outputs.repo }}_legacy.zip
           fail_on_unmatched_files: false
