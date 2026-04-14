@@ -5,5 +5,5 @@ description = "A datapack that removes noise caves and only generates carver cav
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "beet>=0.114.1",
+    "beet>=0.115.0",
 ]
