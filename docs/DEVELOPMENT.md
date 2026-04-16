@@ -27,12 +27,23 @@ source .venv/bin/activate
 
 ## Usage
 
+This project ships two beet configurations:
+
+- `beet.yml` — targets Minecraft **1.21.9+** (pack format ≥ 82), using the modern `min_format` / `max_format` fields only.
+- `beet.legacy.yml` — targets Minecraft versions **below 1.21.9** (pack format < 82), including the deprecated `pack_format`, `supported_formats`, and overlay `formats` fields required for backwards compatibility.
+
+By default, `beet` uses `beet.yml`. To build the legacy pack, pass the config explicitly with `-p`.
+
 ### Build
 
 Compiles the project and writes the output to the `build/` directory.
 
 ```powershell
+# Modern (1.21.9+)
 beet build
+
+# Legacy (< 1.21.9)
+beet -p beet.legacy.yml build
 ```
 
 ### Watch
@@ -40,7 +51,11 @@ beet build
 Rebuilds automatically whenever a source file changes. Useful during active development.
 
 ```powershell
+# Modern (1.21.9+)
 beet watch
+
+# Legacy (< 1.21.9)
+beet -p beet.legacy.yml watch
 ```
 
 ### Link
@@ -48,7 +63,11 @@ beet watch
 Symlinks the built pack directly into your Minecraft `datapacks/` folder so changes are immediately reflected in-game without manual copying.
 
 ```powershell
+# Modern (1.21.9+)
 beet link
+
+# Legacy (< 1.21.9)
+beet -p beet.legacy.yml link
 ```
 
 > Run `beet build` or `beet watch` alongside this so the linked output stays up to date.
@@ -67,35 +86,39 @@ beet cache --clear
 .
 ├── docs/
 ├── src/
-│   └── datapack/          # Datapack source files
-│       └── v1_20_5/       # Overlay for overwrites
-│       └── v1_21_7/       # Overlay for overwrites
+│   ├── datapack/          # Datapack source files
+│   │   └── v1_21/         # Overlay for overwrites
+│   └── resourcepack/      # Resourcepack source files
 ├── build/                 # Build output (git-ignored)
 ├── beet.yml               # Beet project configuration
-├── pyproject.toml         # Python project & dependency config
-└── spyglass.json          # Datapack helper plus extension config
+├── beet.legacy.yml        # Beet legacy project configuration
+└── pyproject.toml         # Python project & dependency config
 ```
 
-## Configuration
+## Updating dependencies
 
-Pack format ranges are configured in `beet.yml`. The project currently targets:
+Dependencies are pinned in `uv.lock`. To pull in newer versions that still satisfy the constraints in `pyproject.toml`, use `uv lock --upgrade`.
 
-| Pack | Min format | Max format | Versions |
-|------|-----------|-----------|----------|
-| Data pack | 10 | 94 | 1.19 – 1.21.11 |
+### Upgrade all dependencies
 
-Overlays are picked up automatically from subdirectories within the load path. Format ranges for overlays are set explicitly in `beet.yml`.
+Re-resolves every dependency to the latest compatible version and updates `uv.lock`.
 
-### Datapack Helper Plus
-
-This template includes a `spyglass.json` for the [Datapack Helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) VS Code extension:
-
-```json
-{
-  "env": {
-    "gameVersion": "Auto"
-  }
-}
+```powershell
+uv lock --upgrade
 ```
 
-With `"gameVersion": "Auto"`, DHP detects the target Minecraft version from your `pack.mcmeta` automatically. Since DHP can only validate against one version at a time, you can temporarily set `"gameVersion"` to a specific version (e.g. `"1.20.5"`) when you need to check code inside an overlay against that particular version.
+### Upgrade a single package
+
+Useful when you only want to bump one dependency without touching the rest of the lockfile.
+
+```powershell
+uv lock --upgrade-package beet
+```
+
+After upgrading, sync the virtual environment so the new versions are actually installed:
+
+```powershell
+uv sync
+```
+
+> Commit the updated `uv.lock` so other contributors get the same resolved versions.
