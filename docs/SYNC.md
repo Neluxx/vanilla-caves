@@ -1,37 +1,42 @@
 # Syncing with the Template
 
-This repository is based on [beet-datapack-template](https://github.com/Neluxx/beet-datapack-template.git) and can be synced with it using a `template` Git remote.
+This repository is based on [beet-datapack-template](https://github.com/Neluxx/beet-datapack-template.git).
+Each sync is recorded as a single squashed commit, with a `template-sync` tag
+marking the last synced template commit.
 
-## Initial Setup
-
-Add the template as a remote. This only needs to be done **once per local clone**:
+## Initial Setup (once per local clone)
 
 ```bash
 git remote add template https://github.com/Neluxx/beet-datapack-template.git
+git fetch template --tags
 ```
 
-## Syncing
+## First Sync (only if the repo has never been synced)
 
-Run these steps whenever you want to pull in changes from the template:
-
-**1. Fetch the latest template changes**
 ```bash
 git fetch template
-```
-
-**2. Merge**
-```bash
-git merge template/main -m "chore: sync with beet template"
-```
-
-**3. Push**
-```bash
+git merge --squash template/main --allow-unrelated-histories
+git commit -m "chore: sync with beet template"
+git tag -f template-sync template/main
 git push origin main
+git push origin template-sync --force
 ```
 
-If there are conflicts during the merge, resolve them, `git add` the resolved files, and then `git commit` before pushing.
+## Regular Sync
 
-## Notes
+```bash
+git fetch template --tags
+git merge --squash template-sync..template/main
+git commit -m "chore: sync with beet template"
+git tag -f template-sync template/main
+git push origin main
+git push origin template-sync --force
+```
 
-- The `--allow-unrelated-histories` flag is only needed on the very first merge, after which the histories are linked and it can be omitted.
-- A regular merge commit is used (not `--squash`) so that Git automatically tracks the sync point, preventing already-synced changes from being re-applied on future syncs.
+If conflicts occur, resolve them, `git add` the files, then continue with the `git commit` step.
+
+## Why this works
+
+- `git merge --squash` applies the template's changes without creating a merge commit — the result is a single clean commit.
+- The `template-sync` tag records which template commit was last synced. The range `template-sync..template/main` ensures only *new* template changes are applied on subsequent syncs, preventing duplicate work or phantom conflicts.
+- Force-pushing the tag is safe — it's just a pointer, not a branch people work on.
