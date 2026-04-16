@@ -4,12 +4,13 @@ version: 0.2.1
 pipeline:
   - src.plugins.cave
   - src.plugins.cave_extra
+  - src.plugins.overworld
 
 meta:
   base_version: "1.21.9"
 
 data_pack:
-  load: src/default
+  load: src/datapack
   description: {"text":"Vanilla Caves\n1.21.9 - 26.1", "color":"gray"}
   min_format: 82
   max_format: 101
