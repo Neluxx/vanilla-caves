@@ -10,7 +10,7 @@ def beet_default(ctx: Context):
 
     for pack, version in iterate_versions(ctx):
         source = vanilla.releases[version].mount("data").data[WorldgenConfiguredCarver]
-        patched = source["minecraft:cave"].copy()
+        patched = source["minecraft:cave_extra_underground"].copy()
         config = patched.data["config"]
         field = field_accessor(config, version)
 
@@ -26,6 +26,6 @@ def beet_default(ctx: Context):
         field("vertical_radius_multiplier")["min_inclusive"] = 1.0  # defaults to 0.8
 
         # The height at which this carver attempts to generate.
-        config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 180
+        config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 47
 
-        pack[WorldgenConfiguredCarver]["minecraft:cave"] = patched
+        pack[WorldgenConfiguredCarver]["minecraft:cave_extra_underground"] = patched
