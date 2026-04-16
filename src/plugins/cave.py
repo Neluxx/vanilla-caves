@@ -15,17 +15,17 @@ def beet_default(ctx: Context):
         field = field_accessor(config, version)
 
         # The probability that each chunk attempts to generate carvers.
-        config["probability"] = 0.125  # defaults to 0.15
+        config["probability"] = 0.15  # defaults to 0.15
 
         # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
         field("horizontal_radius_multiplier")["max_exclusive"] = 1.5  # defaults to 1.4
-        field("horizontal_radius_multiplier")["min_inclusive"] = 0.9  # defaults to 0.7
+        field("horizontal_radius_multiplier")["min_inclusive"] = 0.8  # defaults to 0.7
 
         # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
         field("vertical_radius_multiplier")["max_exclusive"] = 1.4  # defaults to 1.3
-        field("vertical_radius_multiplier")["min_inclusive"] = 1.0  # defaults to 0.8
+        field("vertical_radius_multiplier")["min_inclusive"] = 0.9  # defaults to 0.8
 
         # The height at which this carver attempts to generate.
-        config["y"]["max_inclusive"]["absolute"] = 72  # defaults to 180
+        config["y"]["max_inclusive"]["absolute"] = 180  # defaults to 180
 
         pack[WorldgenConfiguredCarver]["minecraft:cave"] = patched

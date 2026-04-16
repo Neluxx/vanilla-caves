@@ -18,14 +18,14 @@ def beet_default(ctx: Context):
         config["probability"] = 0.2  # defaults to 0.07
 
         # Horizontally scales cave tunnels. Doesn't affect the length of tunnels.
-        field("horizontal_radius_multiplier")["max_exclusive"] = 1.5  # defaults to 1.4
+        field("horizontal_radius_multiplier")["max_exclusive"] = 1.6  # defaults to 1.4
         field("horizontal_radius_multiplier")["min_inclusive"] = 0.9  # defaults to 0.7
 
         # Vertically scales cave tunnels. Doesn't affect the length of tunnels.
-        field("vertical_radius_multiplier")["max_exclusive"] = 1.4  # defaults to 1.3
+        field("vertical_radius_multiplier")["max_exclusive"] = 1.5  # defaults to 1.3
         field("vertical_radius_multiplier")["min_inclusive"] = 1.0  # defaults to 0.8
 
         # The height at which this carver attempts to generate.
-        config["y"]["max_inclusive"]["absolute"] = 48  # defaults to 47
+        config["y"]["max_inclusive"]["absolute"] = 47  # defaults to 47
 
         pack[WorldgenConfiguredCarver]["minecraft:cave_extra_underground"] = patched
