@@ -25,6 +25,10 @@ def beet_default(ctx: Context):
         field("vertical_radius_multiplier")["max_exclusive"] = 1.4  # defaults to 1.3
         field("vertical_radius_multiplier")["min_inclusive"] = 0.9  # defaults to 0.8
 
+        # Vertically scales circular voids.
+        field("yScale")["max_exclusive"] = 0.9  # defaults to 0.9
+        field("yScale")["min_inclusive"] = 0.1  # defaults to 0.1
+
         # The height at which this carver attempts to generate.
         config["y"]["max_inclusive"]["absolute"] = 180  # defaults to 180
 
