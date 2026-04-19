@@ -22,7 +22,3 @@ Common types:
 - `docs` — documentation changes
 - `refactor` — code changes that neither fix a bug nor add a feature
 - `style` — formatting, missing semicolons, etc.
-
-## Syncing with the Template
-
-This repository is based on [beet-datapack-template](https://github.com/Neluxx/beet-datapack-template.git). If you are working on the template and want to pull updates into this repo, please follow the steps in [SYNC.md](SYNC.md).
