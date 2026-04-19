@@ -21,10 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
-## [v0.2.1](https://github.com/Neluxx/vanilla-caves/releases/tag/v0.2.1) - 2026-04-15
+## [v1.0.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.0.0) - 2026-04-19
 
 ### Changed
-- Set the probability that noise caves will generate to zero
-- Slightly enlarged caves
-- Reduction of surface cave entrances
+- Carver caves have been slightly enlarged
 - Increasing frequency of underground caves
+- Remove noise cavess from world generation
