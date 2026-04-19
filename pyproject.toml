@@ -1,6 +1,6 @@
 [project]
 name = "vanilla-caves"
-version = "0.3.0"
+version = "1.0.0"
 description = "A datapack that removes noise caves and only generates carver caves."
 readme = "README.md"
 requires-python = ">=3.14"
