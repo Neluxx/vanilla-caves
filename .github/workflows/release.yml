@@ -53,7 +53,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
-          generate_release_notes: true
+          generate_release_notes: false
           body: | 
             ## Installation
       
@@ -77,4 +77,4 @@ jobs:
           files: |
             ${{ steps.info.outputs.repo }}.zip
             ${{ steps.info.outputs.repo }}_legacy.zip
-          fail_on_unmatched_files: false
+          fail_on_unmatched_files: true
