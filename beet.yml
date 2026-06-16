@@ -11,8 +11,8 @@ meta:
 
 data_pack:
   load: src/datapack
-  description: {"text":"Vanilla Caves\n1.21.9 - 26.1", "color":"gray"}
+  description: {"text":"Vanilla Caves\n1.21.9 - 26.2", "color":"gray"}
   min_format: 82
-  max_format: 101
+  max_format: 107
 
 output: build
