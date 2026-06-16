@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
+## [v1.1.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.1.0) - 2026-06-16
+
+### Added
+- Add support for Minecraft 26.2 Chaos Cubed
+
 ## [v1.0.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.0.0) - 2026-04-19
 
 ### Changed
