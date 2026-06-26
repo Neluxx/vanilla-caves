@@ -1,24 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "schedule": ["before 5:00am"],
-  "timezone": "Europe/Zurich",
-  "labels": ["dependencies"],
-  "assignees": ["neluxx"],
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["patch", "minor"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "labels": ["dependencies", "major-update"]
-    }
-  ],
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "automerge": false,
-    "labels": ["security"]
-  }
+  "extends": ["github>Neluxx/.github:datapack"]
 }
