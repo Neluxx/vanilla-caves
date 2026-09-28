@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
+## [v1.2.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.2.0) - 2026-09-28
+
+### Added
+- Add support for Minecraft 26.3 Wilderness Bound
+
 ## [v1.1.0](https://github.com/Neluxx/vanilla-caves/releases/tag/v1.1.0) - 2026-06-16
 
 ### Added
