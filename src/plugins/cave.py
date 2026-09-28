@@ -1,17 +1,17 @@
 from beet import Context
 from beet.contrib.vanilla import Vanilla
-from beet.contrib.worldgen import WorldgenConfiguredCarver
 
-from src.plugins.utils import iterate_versions, field_accessor
+from src.plugins.utils import carver_registry, field_accessor, iterate_versions, resolve_key, worldgen_config
 
 
 def beet_default(ctx: Context):
     vanilla = ctx.inject(Vanilla)
 
     for pack, version in iterate_versions(ctx):
-        source = vanilla.releases[version].mount("data").data[WorldgenConfiguredCarver]
+        registry = carver_registry(version)
+        source = vanilla.releases[version].mount("data").data[registry]
         patched = source["minecraft:cave"].copy()
-        config = patched.data["config"]
+        config = worldgen_config(patched.data)
         field = field_accessor(config, version)
 
         # The probability that each chunk attempts to generate carvers.
@@ -26,10 +26,12 @@ def beet_default(ctx: Context):
         field("vertical_radius_multiplier")["min_inclusive"] = 0.9  # defaults to 0.8
 
         # Vertically scales circular voids.
-        field("yScale")["max_exclusive"] = 0.9  # defaults to 0.9
-        field("yScale")["min_inclusive"] = 0.1  # defaults to 0.1
+        # Renamed from `yScale` to `room_vertical_radius_multiplier` in 26.3.
+        room = resolve_key(config, "room_vertical_radius_multiplier", "yScale")
+        field(room)["max_exclusive"] = 0.9  # defaults to 0.9
+        field(room)["min_inclusive"] = 0.1  # defaults to 0.1
 
         # The height at which this carver attempts to generate.
         config["y"]["max_inclusive"]["absolute"] = 180  # defaults to 180
 
-        pack[WorldgenConfiguredCarver]["minecraft:cave"] = patched
+        pack[registry]["minecraft:cave"] = patched
