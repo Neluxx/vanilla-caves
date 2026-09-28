@@ -8,11 +8,17 @@ pipeline:
 
 meta:
   base_version: "1.21.9"
+  overlay_versions:
+    v26_3: "26.3"
 
 data_pack:
   load: src/datapack
-  description: {"text":"Vanilla Caves\n1.21.9 - 26.2", "color":"gray"}
+  description: {"text":"Vanilla Caves\n1.21.9 - 26.3", "color":"gray"}
   min_format: 82
-  max_format: 107
+  max_format: 121
+  overlays:
+    - directory: v26_3
+      min_format: 121
+      max_format: 121
 
 output: build
