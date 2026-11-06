@@ -5,5 +5,9 @@ description = "A datapack that removes noise caves and only generates carver cav
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "beet>=0.115.0",
+    "beet>=0.119.0",
+    "beet-datapack-utils",
 ]
+
+[tool.uv.sources]
+beet-datapack-utils = { git = "https://github.com/Neluxx/beet-datapack-utils", tag = "v1.0.0" }
