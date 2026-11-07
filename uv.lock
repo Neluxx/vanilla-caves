@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.14"
 
 [[package]]
@@ -31,6 +31,14 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c0/b3/ddbc87a697aecc176d49bac01317bf57aadc95c92822203621ceb786ad3e/beet-0.121.2.tar.gz", hash = "sha256:a21a85f5cba855c873dd57687700753fe1ff5b91969aa8d23bb541e6721c0481", size = 110098, upload-time = "2026-10-22T15:27:25.197Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c6/bb/fb3c01929b8e544bb0db584772f147998b25b6e8cb84ae5026fd41383414/beet-0.121.2-py3-none-any.whl", hash = "sha256:911948f4f30b39a2624d1e08596f3d5e5cefdc559ec60de58c539c286c4bc2ce", size = 135271, upload-time = "2026-10-22T15:27:23.696Z" },
+]
+
+[[package]]
+name = "beet-datapack-utils"
+version = "1.0.0"
+source = { git = "https://github.com/Neluxx/beet-datapack-utils?tag=v1.0.0#e01082cafb66178a47c916cf1c49ac8d7d9d900e" }
+dependencies = [
+    { name = "beet" },
 ]
 
 [[package]]
@@ -436,10 +444,14 @@ version = "1.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "beet" },
+    { name = "beet-datapack-utils" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "beet", specifier = ">=0.115.0" }]
+requires-dist = [
+    { name = "beet", specifier = ">=0.119.0" },
+    { name = "beet-datapack-utils", git = "https://github.com/Neluxx/beet-datapack-utils?tag=v1.0.0" },
+]
 
 [[package]]
 name = "wcwidth"

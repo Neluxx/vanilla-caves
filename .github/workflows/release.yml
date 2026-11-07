@@ -28,10 +28,10 @@ jobs:
           enable-cache: true
 
       - name: Build standard datapack
-        run: uvx beet build
+        run: uv run --locked beet build
 
       - name: Build legacy datapack
-        run: uvx beet -p beet.legacy.yml build
+        run: uv run --locked beet -p beet.legacy.yml build
 
       - name: Get release info
         id: info
