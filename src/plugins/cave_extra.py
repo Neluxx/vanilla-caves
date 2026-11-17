@@ -1,6 +1,6 @@
 from beet import Context
 
-from datapack_utils import CARVER, Targets, provider, resolve_key, set_range, worldgen_config
+from beet_datapack_utils import CARVER, Targets, provider, resolve_key, set_range, worldgen_config
 
 
 def beet_default(ctx: Context):

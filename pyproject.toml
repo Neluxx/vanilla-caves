@@ -6,8 +6,5 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "beet>=0.119.0",
-    "beet-datapack-utils",
+    "beet-datapack-utils>=0.1.0",
 ]
-
-[tool.uv.sources]
-beet-datapack-utils = { git = "https://github.com/Neluxx/beet-datapack-utils", tag = "v1.0.0" }

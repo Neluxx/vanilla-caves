@@ -3,7 +3,7 @@ from typing import Any
 from beet import Context
 from beet.contrib.worldgen import WorldgenNoiseSettings
 
-from datapack_utils import Targets, is_reference, replace_nodes
+from beet_datapack_utils import Targets, is_reference, replace_nodes
 
 SLOPED_CHEESE = "minecraft:overworld/sloped_cheese"
 NOODLE_CAVES = "minecraft:overworld/caves/noodle"

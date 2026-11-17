@@ -35,10 +35,14 @@ wheels = [
 
 [[package]]
 name = "beet-datapack-utils"
-version = "1.0.0"
-source = { git = "https://github.com/Neluxx/beet-datapack-utils?tag=v1.0.0#e01082cafb66178a47c916cf1c49ac8d7d9d900e" }
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beet" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0e/ba/418590acae600de6b93348f9082f04a803ae604170424830c5955d5c9198/beet_datapack_utils-0.1.0.tar.gz", hash = "sha256:866a0a66144c92fb62f3f3ff2dd2b215ccb7710e32cea7310b5f2d143e1630de", size = 15388, upload-time = "2026-11-17T14:27:46.229Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3f/96/2fddc1e831fb168991682d1dc9974cfbe61c71875f50fdf2f230a96342a5/beet_datapack_utils-0.1.0-py3-none-any.whl", hash = "sha256:33e0b4947d2eca8d222c6f9535e303702b0e677a9ff301e99861eb8c4ebbc8ec", size = 10933, upload-time = "2026-11-17T14:27:45.417Z" },
 ]
 
 [[package]]
@@ -450,7 +454,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "beet", specifier = ">=0.119.0" },
-    { name = "beet-datapack-utils", git = "https://github.com/Neluxx/beet-datapack-utils?tag=v1.0.0" },
+    { name = "beet-datapack-utils", specifier = ">=0.1.0" },
 ]
 
 [[package]]
