@@ -1,11 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>Neluxx/.github"],
-  "packageRules": [
-    {
-      "description": "Keep Python below 3.15",
-      "matchPackageNames": ["/(^|/)python$/"],
-      "allowedVersions": "<3.15"
-    }
-  ]
+  "extends": ["github>Neluxx/.github"]
 }
