@@ -6,5 +6,5 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "beet>=0.121.2",
-    "beet-datapack-utils>=0.1.0",
+    "beet-datapack-utils>=0.2.0",
 ]

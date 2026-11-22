@@ -3,7 +3,7 @@ from typing import Any
 from beet import Context
 from beet.contrib.worldgen import WorldgenNoiseSettings
 
-from beet_datapack_utils import Targets, is_reference, replace_nodes
+from beet_datapack_utils import is_reference, replace_nodes, targets
 
 SLOPED_CHEESE = "minecraft:overworld/sloped_cheese"
 NOODLE_CAVES = "minecraft:overworld/caves/noodle"
@@ -19,7 +19,7 @@ def is_cave_choice(node: Any) -> bool:
 
 
 def beet_default(ctx: Context):
-    for target in ctx.inject(Targets):
+    for target in targets(ctx):
         with target.patch(WorldgenNoiseSettings, "minecraft:overworld") as settings:
             noise_router = settings["noise_router"]
 
@@ -35,5 +35,5 @@ def beet_default(ctx: Context):
             # remove cheese, spaghetti and cave entrances, then replace the noodle
             # reference with 1 to remove noodle caves. Both are found by content, so
             # this works before and after 26.3 and fails the build if vanilla changes.
-            replace_nodes(final_density, is_cave_choice, SLOPED_CHEESE, expected=1)
-            replace_nodes(final_density, lambda node: node == NOODLE_CAVES, 1, expected=1)
+            replace_nodes(final_density, is_cave_choice, SLOPED_CHEESE, count=1)
+            replace_nodes(final_density, lambda node: node == NOODLE_CAVES, 1, count=1)
