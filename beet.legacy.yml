@@ -6,7 +6,7 @@ pipeline:
   - src.plugins.overworld
 
 meta:
-  base_version: "1.19"
+  base_version: "1.19.3"
   overlay_versions:
     v1_20_5: "1.20.5"
 
