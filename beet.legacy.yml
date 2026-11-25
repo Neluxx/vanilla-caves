@@ -2,8 +2,7 @@ name: Vanilla Caves Legacy
 version: 1.2.0
 
 pipeline:
-  - src.plugins.cave
-  - src.plugins.cave_extra
+  - src.plugins.carvers
   - src.plugins.overworld
 
 meta:
