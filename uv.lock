@@ -35,14 +35,14 @@ wheels = [
 
 [[package]]
 name = "beet-datapack-utils"
-version = "0.3.0"
+version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beet" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c4/b9/b3757d164751c63ef1b05c55144d8a66a5135550727feb0f70868e74b213/beet_datapack_utils-0.3.0.tar.gz", hash = "sha256:9c3cc1a542f652116430a3c46d6082c287e5c061060026a0a252a29efae9f3fa", size = 13478, upload-time = "2026-11-25T12:53:26.059Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/87/51/77c01ea9ebd4e5c54e14e7d1b78c8f4ff88a775b9e8074640d4d81969b99/beet_datapack_utils-1.0.0.tar.gz", hash = "sha256:69a6acacf0fbcf54e85a0800289464062514c4cd158bd213e7fa6c47249f51bb", size = 13665, upload-time = "2026-11-25T21:12:49.918Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/98/29/f80321fc5a3f18e4f16e2c233ce40fc13a841c9def7cd2a7e6635dc93771/beet_datapack_utils-0.3.0-py3-none-any.whl", hash = "sha256:4dcb6ffa524d2b294c8043547ca93a576b008634f49150344867b9ae9923ad20", size = 7952, upload-time = "2026-11-25T12:53:25.018Z" },
+    { url = "https://files.pythonhosted.org/packages/79/50/62ac62ba0783b84c0fb37a425efec0d83dbefc339fd920d5456e3bf03701/beet_datapack_utils-1.0.0-py3-none-any.whl", hash = "sha256:605b80ca320265eae1b92aaa182250f7ff760d85e1a1aefacfc0ea500e72c8ab", size = 8026, upload-time = "2026-11-25T21:12:48.937Z" },
 ]
 
 [[package]]
@@ -472,7 +472,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "beet", specifier = ">=0.121.2" },
-    { name = "beet-datapack-utils", specifier = ">=0.3.0" },
+    { name = "beet-datapack-utils", specifier = ">=1.0.0" },
 ]
 
 [[package]]

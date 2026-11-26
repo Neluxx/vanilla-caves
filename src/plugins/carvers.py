@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from beet import Context
 
-from beet_datapack_utils import CARVER, first_existing_key, get_config, set_range, versioned_packs
+from beet_datapack_utils import CARVER, find_key, get_config, set_uniform, versioned_packs
 
 
 @dataclass(frozen=True)
@@ -43,9 +43,9 @@ def beet_default(ctx: Context):
             with pack.edit(CARVER, name) as data:
                 config = get_config(data)
                 config["probability"] = carver.probability
-                set_range(config, "horizontal_radius_multiplier", *carver.horizontal_radius_multiplier)
-                set_range(config, "vertical_radius_multiplier", *carver.vertical_radius_multiplier)
+                set_uniform(config, "horizontal_radius_multiplier", *carver.horizontal_radius_multiplier)
+                set_uniform(config, "vertical_radius_multiplier", *carver.vertical_radius_multiplier)
                 # Renamed from `yScale` in 26.3.
-                room = first_existing_key(config, "room_vertical_radius_multiplier", "yScale")
-                set_range(config, room, *carver.room_vertical_radius_multiplier)
+                room = find_key(config, "room_vertical_radius_multiplier", "yScale")
+                set_uniform(config, room, *carver.room_vertical_radius_multiplier)
                 config["y"]["max_inclusive"]["absolute"] = carver.max_y
