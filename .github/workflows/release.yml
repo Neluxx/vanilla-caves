@@ -9,71 +9,11 @@ concurrency:
   group: release-${{ github.ref_name }}
   cancel-in-progress: false
 
+permissions:
+  contents: read
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  release:
+    uses: Neluxx/.github/.github/workflows/datapack-release.yml@main
     permissions:
       contents: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
-        with:
-          python-version: "3.14"
-          enable-cache: true
-
-      - name: Build standard datapack
-        run: uv run --locked beet build
-
-      - name: Build legacy datapack
-        run: uv run --locked beet -p beet.legacy.yml build
-
-      - name: Get release info
-        id: info
-        run: |
-          read PROJECT VERSION <<< $(python3 -c "import yaml; d=yaml.safe_load(open('beet.yml')); print(d['name'].lower().replace(' ','_'), d['version'])")
-          echo "project=$PROJECT" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "repo=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
-
-      - name: Package release artifacts
-        run: |
-          cd build/${{ steps.info.outputs.project }}_${{ steps.info.outputs.version }}_data_pack
-          zip -r "../../${{ steps.info.outputs.repo }}.zip" .
-          cd ../${{ steps.info.outputs.project }}_legacy_${{ steps.info.outputs.version }}_data_pack
-          zip -r "../../${{ steps.info.outputs.repo }}_legacy.zip" .
-
-      - name: Create release
-        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
-        with:
-          tag_name: ${{ github.ref_name }}
-          generate_release_notes: false
-          body: | 
-            ## Installation
-      
-            - Download the datapack from the assets section
-            - Move the datapack inside `.minecraft/saves/<world>/datapacks` ([How to find .minecraft?](https://minecraft.wiki/w/.minecraft#Locating))
-            - Reload the world or run `/reload`
-            
-            ## Legacy Datapack
-
-            This release includes two datapack variants:
-            
-            - **Standard datapack** → for Minecraft versions **1.21.9 and newer**
-            - **Legacy datapack** → for Minecraft versions **below 1.21.9**
-            
-            Please ensure you download the correct version for your game, as using the wrong datapack may result in errors or missing functionality.
-      
-            ## Support the Project
-      
-            If you enjoy this datapack and find it useful, please consider giving the repository a star and following me on GitHub.  
-            This helps the project gain visibility and motivates further development and maintenance.
-          files: |
-            ${{ steps.info.outputs.repo }}.zip
-            ${{ steps.info.outputs.repo }}_legacy.zip
-          fail_on_unmatched_files: true
