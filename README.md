@@ -19,7 +19,8 @@ It is ideal for players who prefer the old-school cave layout.
 ## Installation
 
 - Download the [datapack](https://github.com/Neluxx/vanilla-caves/releases/latest)
-- Move the datapack inside ``.minecraft/saves/<world>/datapacks`` ([How to find .minecraft?](https://minecraft.wiki/w/.minecraft#Locating))
+- Move the datapack inside ``.minecraft/saves/<world>/datapacks``
+  ([How to find .minecraft?](https://minecraft.wiki/w/.minecraft#Locating))
 - Reload the world or run ``/reload``
 
 ## Support the Project
@@ -29,4 +30,6 @@ This helps the project gain visibility and motivates further development and mai
 
 ## Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for commit conventions and guidelines.
+Contributions are welcome! Please read
+the [contributing guidelines](https://github.com/Neluxx/.github/blob/main/CONTRIBUTING.md) and
+the [development guide](https://github.com/Neluxx/.github/blob/main/docs/DATAPACK_DEVELOPMENT.md).
