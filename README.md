@@ -2,17 +2,18 @@
 
 Vanilla Caves is a datapack that disables the noise-based cave generation introduced in the Caves & Cliffs update.
 
-With this datapack, only the classic carver-based cave system remains, restoring the simpler and more structured cave networks from pre-1.18 Minecraft.  
+With this datapack, only the classic carver-based cave system remains, restoring the simpler and more structured cave
+networks from pre-1.18 Minecraft.  
 It is ideal for players who prefer the old-school cave layout.
 
 ## Features
 
 - Disables all noise-based caves (spaghetti caves, cheese caves, etc.)
 - Restores classic carver-based cave generation only
-  - Slightly enlarged caves
-  - Reduced number of surface cave entrances
-  - Increased frequency of underground caves
-- Only affects newly generated chunks
+    - Slightly enlarged caves
+    - Reduced number of surface cave entrances
+    - Increased frequency of underground caves
+- Only affects newly generated chunks in the default world type
 - No other terrain features are changed
 
 ## Installation
@@ -23,8 +24,9 @@ It is ideal for players who prefer the old-school cave layout.
 
 ## Support the Project
 
-If you enjoy this datapack and find it useful, please consider giving the repository a star and following me on GitHub.  
+If you enjoy this datapack, please consider giving the repository a star and following me on GitHub.  
 This helps the project gain visibility and motivates further development and maintenance.
 
 ## Contributing
+
 Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for commit conventions and guidelines.
